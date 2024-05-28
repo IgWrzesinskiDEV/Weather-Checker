@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather-Checker</title>
+
+    <script src="dist/bundle.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/6ff8e35ce0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <template id="weatherModuleTemp">
+      <section>
+        <h2 class="date"></h2>
+        <img src="" alt="weather icon" class="icon" />
+
+        <h3 class="temperature"></h3>
+
+        <ul id="otherInfo"></ul>
+      </section>
+    </template>
+    <header>
+      <form>
+        <input type="text" id="address" />
+        <button type="submit" class="searchnBtn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      <button class="locationBtn">
+        Share location
+        <i class="fa-solid fa-location-arrow"></i>
+      </button>
+    </header>
+    <main>
+      <h1 id="cityName"></h1>
+      <div class="sectionWraper"></div>
+    </main>
+  </body>
+</html>
