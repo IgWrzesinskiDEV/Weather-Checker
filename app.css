@@ -12,11 +12,13 @@ html {
   /* color-scheme: dark light; */
 }
 body {
-  height: 100svh;
+  min-height: 100svh;
 
+  width: 100%;
   background-image: url("img/landscape-8487887_1920.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   backdrop-filter: blur(15px);
 }
 header {
@@ -34,6 +36,45 @@ form {
 .locationBtn {
   margin-right: 0.2rem;
 }
+.tooltip {
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
 input {
   /* border-left: none;
   border-right: none; */
@@ -196,5 +237,32 @@ li:nth-child(4)::before {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  /* body {
+    backdrop-filter: blur(15px);
+  } */
+  .sectionWraper {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  section {
+    flex-basis: 75%;
+    height: 60svh;
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  section {
+    flex-basis: 33%;
+    height: 120svh;
+    margin-bottom: 2rem;
+  }
+  .temperature,
+  .date {
+    font-size: 1.2rem;
   }
 }
