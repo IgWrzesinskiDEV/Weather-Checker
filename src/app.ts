@@ -46,6 +46,7 @@ class Input {
   }
   errorCallBack(err: GeolocationPositionError) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
+    alert(`ERROR(${err.code}): ${err.message}`);
   }
   getCurrentPostion() {
     const options = {
@@ -72,7 +73,7 @@ class Input {
       )
       .then((response) => {
         if (response.data.status !== "OK") {
-          throw new Error("Couldnt find location");
+          throw new Error("locationError");
         }
         const coordinates = response.data.results[0].geometry.location;
         const { lat, lng } = coordinates;
@@ -81,9 +82,29 @@ class Input {
         this.getWeathereData(newCord);
         this.inputElement.value = "";
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         console.log(err);
+        if (err.message === "locationError") {
+          this.showToolTip("Couldn't find that place");
+        } else {
+          this.showToolTip("Type city name");
+        }
       });
+  }
+  showToolTip(tooltipTextContent: string) {
+    const tooltip = document.querySelector(".tooltip")! as HTMLDivElement;
+    const tooltipText = document.querySelector(
+      ".tooltiptext"
+    ) as HTMLSpanElement;
+    tooltipText.textContent = tooltipTextContent;
+    tooltip.style.visibility = "visible";
+    tooltipText.style.opacity = "1";
+    tooltipText.style.visibility = "visible";
+    //tooltip.classList.add("tooltiptextVis");
+    setTimeout(() => {
+      tooltip.style.visibility = "hidden";
+      tooltipText.style.opacity = "0";
+    }, 2000);
   }
   getOtherWeatherInfo(weatherObj: any) {
     const map = new Map<string, string>();
