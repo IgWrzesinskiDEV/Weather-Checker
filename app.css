@@ -240,6 +240,17 @@ li:nth-child(4)::before {
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  section {
+    flex-basis: 33%;
+    height: 120svh;
+    margin-bottom: 2rem;
+  }
+  .temperature,
+  .date {
+    font-size: 1.2rem;
+  }
+}
 @media only screen and (max-width: 700px) {
   /* body {
     backdrop-filter: blur(15px);
@@ -252,17 +263,5 @@ li:nth-child(4)::before {
     flex-basis: 75%;
     height: 60svh;
     margin-bottom: 2rem;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  section {
-    flex-basis: 33%;
-    height: 120svh;
-    margin-bottom: 2rem;
-  }
-  .temperature,
-  .date {
-    font-size: 1.2rem;
   }
 }
