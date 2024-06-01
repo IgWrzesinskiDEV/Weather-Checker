@@ -9,7 +9,6 @@ html {
   font-size: 20px;
   font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
     "DejaVu Sans Mono", monospace;
-  /* color-scheme: dark light; */
 }
 body {
   min-height: 100svh;
@@ -76,8 +75,6 @@ form {
 }
 
 input {
-  /* border-left: none;
-  border-right: none; */
   background-color: #fafafb;
   border-radius: 10px;
   border: 0;
@@ -111,8 +108,6 @@ input:focus {
   padding: 0.2rem 0.3rem;
   margin-top: 0.3rem;
   border-radius: 5px;
-  /* border: none; */
-  /* transition: 0.5s; */
 }
 .fa-location-arrow {
   transition: 0.2s;
@@ -198,9 +193,7 @@ section {
   font-weight: bold;
   padding-left: 1rem;
 }
-/* li p {
-  position: relative;
-} */
+
 li::before {
   content: "";
   position: absolute;
@@ -211,7 +204,6 @@ li::before {
   height: 35px;
   width: 35px;
   background-size: contain;
-  /* background-image: url("https://img.icons8.com/?size=100&id=656&format=png&color=000000"); */
 }
 li:nth-child(4) {
   border-bottom: none !important;
@@ -252,9 +244,6 @@ li:nth-child(4)::before {
   }
 }
 @media only screen and (max-width: 700px) {
-  /* body {
-    backdrop-filter: blur(15px);
-  } */
   .sectionWraper {
     flex-wrap: wrap;
     width: 100%;

@@ -29,8 +29,6 @@ class Input {
       this.getCurrentPostion.bind(this)
     );
 
-    // this.getCurrentPostion(); //test
-
     this.formElement.addEventListener(
       "submit",
       this.searchAddressHandler.bind(this)
@@ -40,12 +38,10 @@ class Input {
     const crd = pos.coords;
     const { latitude, longitude } = crd;
     const newCord = `${latitude},${longitude}`;
-    console.log(newCord);
 
     this.getWeathereData(newCord);
   }
   errorCallBack(err: GeolocationPositionError) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
     alert(`ERROR(${err.code}): ${err.message}`);
   }
   getCurrentPostion() {
@@ -83,7 +79,6 @@ class Input {
         this.inputElement.value = "";
       })
       .catch((err: Error) => {
-        console.log(err);
         if (err.message === "locationError") {
           this.showToolTip("Couldn't find that place");
         } else {
@@ -100,7 +95,7 @@ class Input {
     tooltip.style.visibility = "visible";
     tooltipText.style.opacity = "1";
     tooltipText.style.visibility = "visible";
-    //tooltip.classList.add("tooltiptextVis");
+
     setTimeout(() => {
       tooltip.style.visibility = "hidden";
       tooltipText.style.opacity = "0";
@@ -131,7 +126,6 @@ class Input {
         },
       })
       .then((response1) => {
-        console.log(response1);
         this.setCityName(response1.data.location.name);
         const weatherArray: object[] = response1.data.forecast.forecastday;
 
@@ -191,15 +185,13 @@ class weatherModule {
     dateElement.textContent = this.date;
     temperatureElement.textContent = `${this.temperature.toString()}°C`;
     this.renderLiElements(ulElement);
-    //descElement.textContent = this.desc;
+
     return importedNode;
   }
   renderLiElements(ulElement: HTMLUListElement) {
     for (const [key, val] of this.otherWeatherInfo) {
       const newLiElement = document.createElement("li");
       const newParagraphElement = document.createElement("p");
-      // let el = window.getComputedStyle(newLiElement, ":before");
-      // el.setProperty("background-image", `url("${this.iconLinkArray[i]}")`);
       newParagraphElement.textContent = `${val}`;
       newLiElement.textContent = `${key} `;
       newLiElement.appendChild(newParagraphElement);
